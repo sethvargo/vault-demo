@@ -263,7 +263,7 @@ password       	87788e92-a0c9-6e60-b8f4-d836c06ebec1
 username       	token-bbd6454a-40f5-473a-380f-4046540eff00
 ```
 
-This is a real username and password that can be used to login to Vault:
+This is a real username and password that can be used to login to postgres:
 
 ```
 $ psql -H vault.hashicorp.rocks -U token-bbd6454a-40f5-473a-380f-4046540eff00
