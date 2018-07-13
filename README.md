@@ -75,6 +75,13 @@ vault kv get secret/foo
 vault kv get -version=1 secret/foo
 ```
 
+Rollback
+
+```
+vault kv rollback -version=1 secret/foo
+vault kv get secret/foo
+```
+
 Delete
 
 ```
@@ -113,16 +120,22 @@ vault write transit/decrypt/myapp ciphertext="..."
 The transit endpoint supports key rotation as well. Trigger a key rotation:
 
 ```
-vault write -f transit/keys/my-app/rotate
+vault write -f transit/keys/myapp/rotate
 ```
 
-This will add a new encryption key to a ring, and data will be upgraded to the new version on the fly automatically. We could optionally have an application that iterates through the data and "rewraps" to the new encryption key. The advantage to the rewrap endpoint is that we never disclose the plaintext to the process - both the input and output are ciphertext. Here is what that looks like:
+This will add a new encryption key to a ring, and data will be upgraded to the
+new version on the fly automatically. We could optionally have an application
+that iterates through the data and "rewraps" to the new encryption key. The
+advantage to the rewrap endpoint is that we never disclose the plaintext to the
+process - both the input and output are ciphertext. Here is what that looks
+like:
 
 ```
 vault write transit/rewrap/myapp ciphertext=...
 ```
 
-We could have a relatively un-trusted process perform the rewrap operation, because it never discloses the plaintext.
+We could have a relatively un-trusted process perform the rewrap operation,
+because it never discloses the plaintext.
 
 Lastly, it may be tempting to have per-row encryption keys (like in a database).
 However, you should not do this. That means Vault needs to maintain one
@@ -164,6 +177,19 @@ Generate a new database credential
 vault read database/creds/readonly
 ```
 
+Login as one of our users and generate:
+
+```
+vault login -method=userpass username=chris password=password
+vault read database/creds/readonly
+```
+
+Log back in as the root user:
+
+```
+vault login root
+```
+
 Do this a few times to showcase real production
 
 ```
@@ -173,19 +199,20 @@ Do this a few times to showcase real production
 Show
 
 ```
-psql -h localhost -U postgres
+psql
 \du
 \q
 ```
 
-Oh no - chris is evil - let's revoke everything
+Oh no - chris and devin are evil - let's revoke everything
 
 ```
 vault token revoke -mode=path auth/userpass/login/chris
+vault token revoke -mode=path auth/userpass/login/devin
 ```
 
 ```
-psql -h localhost -U postgres
+psql
 \du
 \q
 ```
@@ -217,7 +244,7 @@ QR code
 echo "..." | base64 --decode > qr.png
 ```
 
-Scan into 1password
+Sign into 1password
 
 ...
 
