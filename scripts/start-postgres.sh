@@ -2,7 +2,10 @@
 set -e
 set -o pipefail
 
-docker run -d -p 5432:5432 -e POSTGRES_DB=myapp postgres
+docker kill vault-demo-postgres &>/dev/null || true
+docker rm vault-demo-postgres &>/dev/null || true
+
+docker run --name=vault-demo-postgres --rm -d -p 5432:5432 -e POSTGRES_DB=myapp postgres
 echo "==> Done!"
 
 export PGHOST="localhost"

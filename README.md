@@ -28,7 +28,7 @@ not use this Vault setup in production.
 Start the Vault server
 
 ```
-vault server -dev
+vault server -dev -dev-plugin-dir=./plugins
 ```
 
 Open a new terminal tab/session or background the process.
@@ -161,7 +161,7 @@ process - both the input and output are ciphertext. Here is what that looks
 like:
 
 ```
-vault write transit/rewrap/myapp ciphertext=...
+vault write transit/rewrap/myapp ciphertext="..."
 ```
 
 We could have a relatively un-trusted process perform the rewrap operation,
@@ -304,14 +304,20 @@ that generates passwords and passphrases for use on websites similar to
 Note that the plugin is "enabled" or "mounted" at `gen/`. That means all
 requests to `gen/` go to the plugin. The plugin defines the supported paths.
 
+Run the script:
+
+```
+./scripts/setup-plugin.sh
+```
+
 To generate a new password:
 
-```sh
-$ vault write gen/password length=64
+```
+vault write gen/password length=64
 ```
 
 To generate a random passphrase using the diceware algorithm:
 
-```sh
-$ vault write -f gen/passphrase words=6
+```
+vault write -f gen/passphrase words=6
 ```

@@ -1,4 +1,4 @@
 *.png
 *.tgz
 *.zip
-vault-secrets-gen
+plugins/
