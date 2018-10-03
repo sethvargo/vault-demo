@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+set -o pipefail
 
 for u in sally bobby chris devin; do
   vault login \

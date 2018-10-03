@@ -1,14 +1,20 @@
 # Vault Demo
 
-This README contains the steps I take when demoing Vault. I usually change
-things up a bit here and there, but the content is generally like this.
+This repository contains the materials and demo for my **Modern Secrets
+Management** with Vault talk. It has been given at a number of conferences and
+meetups.
 
-If you're looking for instructions for running HashiCorp Vault, check out
+This README contains the steps I take when demoing Vault. I usually change
+things up a bit here and there, but the content is generally like this. The
+steps here are for demo purposes and **may not represent best practices!**
+
+If you want to run HashiCorp Vault in production, check out
 [sethvargo/vault-on-gke](https://github.com/sethvargo/vault-on-gke).
+
 
 ## Getting Started
 
-First we need to configure our local client to talk to the remote Vault server
+First, we need to configure our local client to talk to the remote Vault server:
 
 ```
 export VAULT_DEV_ROOT_TOKEN_ID=root
@@ -25,7 +31,8 @@ Start the Vault server
 vault server -dev
 ```
 
-Open a new tab or background the process.
+Open a new terminal tab/session or background the process.
+
 
 ## Authentication
 
@@ -38,7 +45,18 @@ demo easier.
 vault login root
 ```
 
-Create some users who will authenticate to Vault.
+There are many ways to authenticate to Vault including GitHub,
+username-password, LDAP, and more. There are also ways for machines to
+authenticate such as AppID or TLS.
+
+The root user is special and has all permissions in the system. Other users must
+be granted access via policies, which we will explore in a bit.
+
+
+## Create Users
+
+Create some users who will authenticate to Vault. These users will
+authentication with standard username and password.
 
 ```
 ./scripts/create-users.sh
@@ -88,6 +106,7 @@ Delete
 vault kv delete secret/foo
 ```
 
+
 ## Transit
 
 The transit backend provides "encryption as a service" and allows round-tripping
@@ -95,23 +114,34 @@ of data through Vault. This data is never actually stored in Vault, so the
 memory footprint is relatively low (as compared with the generic secret backend,
 for example). The transit backend behaves very similar a cloud KMS service
 
+The advantage here is that applications do not need to know how to do asymmetric
+encryption nor do they applications even know the encryption key. An attacker
+would need to compromise multiple systems to decrypt the data.
+
 ```
 vault secrets enable transit
 ```
 
-Create an encryption key
+Create an encryption key. You can think of the name "myapp" as a symlink or
+pointer to the actual encryption key.
 
 ```
 vault write -f transit/keys/myapp
 ```
 
-Encrypt some data (base64)
+Encrypt some data (base64). Now we can feed data into this named key, and Vault
+will return the encrypted data. Because there is no requirement the data be
+"text", we need to pass base64-encoded data.
 
 ```
 vault write transit/encrypt/myapp plaintext=$(base64 <<< "hi")
 ```
 
-Decrypt that data
+Vault returns the base64-encoded ciphertext. This ciphertext can be stored in
+our database or filesystem. When our application needs the plaintext value, it
+can post the encrypted value and get the plaintext back.
+
+Decrypt that data.
 
 ```
 vault write transit/decrypt/myapp ciphertext="..."
@@ -137,28 +167,37 @@ vault write transit/rewrap/myapp ciphertext=...
 We could have a relatively un-trusted process perform the rewrap operation,
 because it never discloses the plaintext.
 
-Lastly, it may be tempting to have per-row encryption keys (like in a database).
-However, you should not do this. That means Vault needs to maintain one
-encryption key per row, and that will bloat over time. Instead you can use
+Lastly, it may be tempting to have **per-row encryption keys** (like in a
+database). However, you should not do this. That means Vault needs to maintain
+one encryption key per row, and that will bloat over time. Instead you can use
 [derived keys](https://www.vaultproject.io/docs/secrets/transit/), which allow a
 per-context encryption value.
 
 
 ## Database
 
-Start postgres (requires docker)
+Vault also has the ability to _generate_ secrets. These are called "dynamic"
+secrets. Unlike static secrets, dynamic secrets have an expiration, called a
+lease. At the end of this lease, the credential is revoked. This prevents secret
+sprawl and significantly reduces the attack surface. Instead of a database
+password living in a text file for 6 months, it can be dynamically generated
+every 30 minutes!
+
+Start postgres (requires Docker). This example uses a local Postgres instance,
+but this could easily be a Google Cloud SQL instance or other hosted database
+service.
 
 ```
 ./scripts/start-postgres.sh
 ```
 
-Enable the database secrets engine
+Enable the database secrets engine.
 
 ```
 vault secrets enable database
 ```
 
-Configure the database connection and role
+Configure the database connection and role.
 
 ```
 cat scripts/configure-database.sh
@@ -223,6 +262,7 @@ Serious data breach
 vault lease revoke -prefix database/
 ```
 
+
 ## TOTP
 
 ```
@@ -252,4 +292,26 @@ Authenticate
 
 ```
 vault write totp/code/seth code=...
+```
+
+
+## Plugin
+
+Vault can be extended with plugins. A popular third-party plugin is a plugin
+that generates passwords and passphrases for use on websites similar to
+1Password or LastPass called "vault-secrets-gen".
+
+Note that the plugin is "enabled" or "mounted" at `gen/`. That means all
+requests to `gen/` go to the plugin. The plugin defines the supported paths.
+
+To generate a new password:
+
+```sh
+$ vault write gen/password length=64
+```
+
+To generate a random passphrase using the diceware algorithm:
+
+```sh
+$ vault write -f gen/passphrase words=6
 ```

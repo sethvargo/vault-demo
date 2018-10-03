@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+set -o pipefail
 
 vault write database/config/my-postgresql-database \
   plugin_name="postgresql-database-plugin" \

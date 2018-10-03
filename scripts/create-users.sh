@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+set -o pipefail
 
 vault policy write postgresql-readonly -<<EOF
 path "database/creds/readonly" {
