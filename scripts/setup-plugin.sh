@@ -12,6 +12,6 @@ fi
 cd -
 
 PLUGIN_SHA=$(shasum -a 256 "plugins/vault-secrets-gen" | cut -d " " -f1)
-vault plugin register -sha256="${PLUGIN_SHA}" vault-secrets-gen
+vault plugin register -sha256="${PLUGIN_SHA}" secret vault-secrets-gen
 
 vault secrets enable -path=gen -plugin-name=vault-secrets-gen plugin
