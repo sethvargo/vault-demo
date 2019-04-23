@@ -36,19 +36,25 @@ Note:
 ![](assets/img/vault-configuration.png)
 @snapend
 
+
 ---?code=scripts/configure-vault.sh&lang=bash&color=#1E1F21&title=Configure Vault
 @title[Configure Vault]
 
----
 
-
-
-
-
----?code=scripts/create-users.sh&lang=bash
-## Create Users
+---?code=scripts/create-users.sh&lang=bash&color=#1E1F21&title=Create Users
 @title[Create Users]
 
----?code=scripts/generate-credentials.sh&lang=bash
-## Generate Credentials
+
+---?code=scripts/generate-credentials.sh&lang=bash&color=#1E1F21&title=Generate Credentials
 @title[Generate Credentials]
+
+---
+@title[Resources]
+### Resources
+
+@ul
+- [Vault Documentation](https://www.vaultproject.io/docs/vs/index.html)
+- [Database Secrets Engine](https://www.vaultproject.io/docs/secrets/databases/index.html)
+- [Slide Credits (and a good blog)](https://dev.to/xfrarod/dynamically-securing-databases-using-hashicorp-vault-2kf)
+- [Demo Inspiration](https://github.com/sethvargo/vault-demo)
+@ulend
