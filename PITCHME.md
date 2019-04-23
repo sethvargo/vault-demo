@@ -1,9 +1,16 @@
 #### Database Dynamic Secrets with Vault
+
 ##### https://github.com/kecorbin/vault-demo
 
 ---?image=https://www.datocms-assets.com/2885/1542059918-hashicorpshare-imgfull-stack-graphic1200x630.png
 @title[HashiCorp Overview]
 
+Note:
+
+- Terraform enables you to safely and predictably create, change, and improve infrastructure. It is an open source tool that codifies APIs into declarative configuration files that can be shared amongst team members, treated as code, edited, reviewed, and versioned.
+- Vault tightly controls access to secrets and encryption keys by authenticating against trusted sources of identity such as Active Directory, LDAP, Kubernetes, CloudFoundry, and cloud platforms. Vault enables fine grained authorization of which users and applications are permitted access to secrets and keys.
+- Nomad is a flexible container orchestration tool that enables an organization to easily deploy and manage any containerized or legacy application using a single, unified workflow.
+- Consul is a service mesh solution providing a full featured control plane with service discovery, configuration, and segmentation functionality. Each of these features can be used individually as needed, or they can be used together to build a full service mesh
 
 ---
 @title[Vault Architecture]
@@ -21,15 +28,8 @@
 ---
 @title[Solution Overview]
 ### Solution Overview
-![Solution Overview](assets/img/solution-overview.png)
-
-
----
-
 @snap[west span-50]
-#### H4
-* Bullets
-
+![Solution Overview](assets/img/solution-overview.png)
 @snapend
 
 @snap[east span-50]
@@ -38,6 +38,12 @@
 
 ---?code=scripts/configure-vault.sh&lang=bash&color=#1E1F21&title=Configure Vault
 @title[Configure Vault]
+
+---
+
+
+
+
 
 ---?code=scripts/create-users.sh&lang=bash
 ## Create Users
