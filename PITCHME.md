@@ -13,14 +13,28 @@
 ---?image=https://www.datocms-assets.com/2885/1542059918-hashicorpshare-imgfull-stack-graphic1200x630.png
 @title[HashiCorp Overview]
 
----?image=assets/img/solution-overview.png
+
+---
+@title[Vault Architecture]
+
+#### Vault Architecture
+
+![Vault Architecture](https://www.vaultproject.io/img/layers.png)
+
+
+---
 @title[Solution Overview]
+
+### Solution Overview
+![Solution Overview](assets/img/solution-overview.png)
 
 
 ---
 
 @snap[west span-50]
-## Vault Configuration
+#### H4
+* Bullets
+
 @snapend
 
 @snap[east span-50]
