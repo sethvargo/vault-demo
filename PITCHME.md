@@ -1,14 +1,4 @@
-# Vault Demo
-
----
-
-## Agenda
-
-### Hashicorp Overview
-### Use Case Review
-### Solution Overview
-### Demo
-### Q&A
+# Database Dynamic Secrets with Vault
 
 ---?image=https://www.datocms-assets.com/2885/1542059918-hashicorpshare-imgfull-stack-graphic1200x630.png
 @title[HashiCorp Overview]
@@ -44,3 +34,11 @@
 ---?code=scripts/configure-vault.sh&lang=bash
 ## Configure Vault
 @title[Configure Vault]
+
+---?code=scripts/create-users.sh&lang=bash
+## Create Users
+@title[Create Users]
+
+---?code=scripts/generate-credentials.sh&lang=bash
+## Generate Credentials
+@title[Generate Credentials]
