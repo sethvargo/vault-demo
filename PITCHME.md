@@ -28,3 +28,5 @@
 @snapend
 
 ---?code=scripts/configure-vault.sh&lang=bash
+## Configure Vault
+@title[Configure Vault]
