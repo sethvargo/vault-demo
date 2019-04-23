@@ -11,17 +11,11 @@
 ### Q&A
 
 ---?image=https://www.datocms-assets.com/2885/1542059918-hashicorpshare-imgfull-stack-graphic1200x630.png
+@title[HashiCorp Overview]
 
----
+---?image=assets/img/solution-overview.png
 @title[Solution Overview]
 
-@snap[west span-50]
-## Solution Overview
-@snapend
-
-@snap[east span-50]
-![](assets/img/solution-overview.png)
-@snapend
 
 ---
 
@@ -32,3 +26,5 @@
 @snap[east span-50]
 ![](assets/img/vault-configuration.png)
 @snapend
+
+---?code=scripts/configure-vault.sh&lang=bash
