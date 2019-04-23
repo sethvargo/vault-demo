@@ -1,5 +1,9 @@
 # Vault Demo
 
+My fork of https://github.com/sethvargo/vault-demo (thanks)
+
+Additional credit [here](https://dev.to/xfrarod/dynamically-securing-databases-using-hashicorp-vault-2kf)
+
 This repository contains the materials and demo for my **Modern Secrets
 Management** with Vault talk. It has been given at a number of conferences and
 meetups.

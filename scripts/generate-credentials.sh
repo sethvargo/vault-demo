@@ -2,14 +2,16 @@
 set -e
 set -o pipefail
 
-for u in sally bobby chris devin; do
+# create some dynamic database credentials
+for u in kevin adam; do
+  echo "Generating Credentials for $u"
   vault login \
     -method=userpass \
     -no-print \
     username="$u" \
     password=password
 
-  for i in {1..5}; do
+  for i in {1..3}; do
     vault read database/creds/readonly
   done
 done
