@@ -1,4 +1,4 @@
-#### Database Dynamic Secrets with Vault
+### Database Dynamic Secrets with Vault
 
 ##### https://github.com/kecorbin/vault-demo
 
