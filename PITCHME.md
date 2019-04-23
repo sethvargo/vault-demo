@@ -10,6 +10,7 @@
 ### Demo
 ### Q&A
 
+---?image=https://www.datocms-assets.com/2885/1542059918-hashicorpshare-imgfull-stack-graphic1200x630.png
 
 ---
 @title[Solution Overview]
@@ -31,6 +32,3 @@
 @snap[east span-50]
 ![](assets/img/vault-configuration.png)
 @snapend
-
-
----?image=https://d33wubrfki0l68.cloudfront.net/e79a0638b3584f43d1003b75d0f0c83557e04482/66a79/img/stack-graphic/top-layer.svg
