@@ -52,9 +52,8 @@ Note:
 @title[Resources]
 ### Resources
 
-@ul
-- [Vault Documentation](https://www.vaultproject.io/docs/vs/index.html)
-- [Database Secrets Engine](https://www.vaultproject.io/docs/secrets/databases/index.html)
-- [Slide Credits (and a good blog)](https://dev.to/xfrarod/dynamically-securing-databases-using-hashicorp-vault-2kf)
-- [Demo Inspiration](https://github.com/sethvargo/vault-demo)
-@ulend
+
+[Vault Documentation](https://www.vaultproject.io/docs/vs/index.html)
+[Database Secrets Engine](https://www.vaultproject.io/docs/secrets/databases/index.html)
+[Slide Credits (and a good blog)](https://dev.to/xfrarod/dynamically-securing-databases-using-hashicorp-vault-2kf)
+[Demo Inspiration](https://github.com/sethvargo/vault-demo)
