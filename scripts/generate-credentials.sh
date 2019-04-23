@@ -2,7 +2,7 @@
 set -e
 set -o pipefail
 
-# create some dynamic database credentials
+# multiple users request credentials
 for u in kevin adam; do
   echo "Generating Credentials for $u"
   vault login \

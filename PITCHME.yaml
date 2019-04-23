@@ -1,7 +1,3 @@
-# GitPitch In-60-Seconds - A Very Short Tutorial.
-#
-
-#
 # Theme Setting
 # Doc: https://gitpitch.com/docs/settings/theme
 #
@@ -17,20 +13,20 @@ theme-override: assets/css/PITCHME.css
 # Logo Setting
 # https://gitpitch.com/docs/settings/logo
 #
-logo : assets/img/logo.png
-logo-postion : top-left
+logo : https://pbs.twimg.com/profile_images/1020299134786506753/veG8ZzKA_400x400.jpg
+logo-postion : top-right
 
 #
 # Layout Setting
 # Doc: https://gitpitch.com/docs/settings/layout
 #
-layout : center
+layout : center-left
 
 #
 # Footnote Setting
 # Doc: https://gitpitch.com/docs/settings/footnote
 #
-footnote : "GitPitch - The Fastest Way From Idea To Presentation"
+footnote : "Dynamic Database Secrets with Vault"
 
 #
 # Published Setting
@@ -42,6 +38,5 @@ published : true
 # Twitter Card Settings [Pro Only]
 # Doc: https://gitpitch.com/docs/settings/twitter-card
 #
-title : "GitPitch In 60 Seconds"
-description : "A short tutorial introducing the power and simplicity of GitPitch, the markdown presentation service on Git."
-thumbnail : https://gitpitch.com/gpimg/tutorial-thumb.png
+title : "Dynamic Database Secrets with Vault"
+description : "A short tutorial on using HashiCorp Vault to generate dynamic PostgreSQL credentials"

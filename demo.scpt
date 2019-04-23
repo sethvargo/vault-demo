@@ -29,8 +29,6 @@ tell application "iTerm"
 		write text "export VAULT_DEV_ROOT_TOKEN_ID=root"
 		write text "export VAULT_ADDR=http://127.0.0.1:8200"
 		write text "docker exec -ti vault-demo-postgres psql -U postgres"
-
-
 	end tell
 
 	tell pane_3
@@ -40,7 +38,7 @@ tell application "iTerm"
 		write text "sleep 10s"
 		write text "vault login root"
 		write text "open http://127.0.0.1:8200"
-
+		write text "open http://gitpitch.com/kecorbin/vault-demo/gitpitch"
 	end tell
 
 end tell
