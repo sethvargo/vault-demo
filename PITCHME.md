@@ -11,10 +11,14 @@
 
 ![Vault Architecture](https://www.vaultproject.io/img/layers.png)
 
+---
+@title[Shamir's Secret Sharing]
+#### Shamir's Secret Sharing
+![Shamirs Secret Sharing](https://www.vaultproject.io/img/vault-shamir-secret-sharing.svg)
+
 
 ---
 @title[Solution Overview]
-
 ### Solution Overview
 ![Solution Overview](assets/img/solution-overview.png)
 
@@ -31,8 +35,7 @@
 ![](assets/img/vault-configuration.png)
 @snapend
 
----?code=scripts/configure-vault.sh&lang=bash
-## Configure Vault
+---?code=scripts/configure-vault.sh&lang=bash&color=#1E1F21&title=Configure Vault
 @title[Configure Vault]
 
 ---?code=scripts/create-users.sh&lang=bash
